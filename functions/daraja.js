@@ -1,6 +1,7 @@
 import express from "express";
 import request from "request";
 import bodyParser from "body-parser";
+require("dotenv").config();
 const app = express();
 app.use(bodyParser.json());
 
@@ -52,8 +53,6 @@ app.post("/confirmation", (req, res) => {
   );
   console.log(req.body);
 
-
-
   res.send(200);
 });
 
@@ -63,7 +62,6 @@ app.post("/validation", (req, res) => {
   );
   console.log(req.body);
   res.send(200);
-
 });
 
 app.get("/simulate", access, (req, res) => {
@@ -117,9 +115,7 @@ function access(req, res, next) {
   //access token
   let url =
     "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
-  let auth = new Buffer.from(
-    "gMvrpCzJh1QjjWZy7ZFjZIzZHlZkcfrA:FRlRVg08QWTsVO3N"
-  ).toString("base64");
+  let auth = new Buffer.from(process.env.AUTH_TOKEN).toString("base64");
 
   request(
     {
