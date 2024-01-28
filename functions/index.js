@@ -9,5 +9,5 @@ import daraja from './daraja.js';
 export const besha = functions.https.onRequest(daraja); 
 
 export const helloWorld = functions.https.onRequest((request, response) => { 
-  response.send("Hello from Firebase!");
+  response.send("Hello worldsss!");
 });
